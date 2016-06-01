@@ -107,8 +107,6 @@ class PacketinDumper < Controller
         info "  mpls_tc: #{ event.mpls_tc.to_hex }"
         info "  mpls_bos: #{ event.mpls_bos.to_hex }"
       end
-    else
-      #puts "No packets have been sent."
     end
   end
 end
