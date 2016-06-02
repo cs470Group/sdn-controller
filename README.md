@@ -2,7 +2,7 @@
 
 To Run:
 
-./trema run src/examples/packet_in/packet-in.rb -c src/examples/packet_in/packet_in.conf
+./trema run src/project2/project2.rb -c src/project2/project2.conf
 
 To Send Packets:
 
