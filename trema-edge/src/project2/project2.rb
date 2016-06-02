@@ -44,9 +44,13 @@ class LearningSwitch < Controller
     )
   end
 
+  # Handles all incoming packets.
   def packet_in(datapath_id, message)
+    # Print out packet information.
     print_packets datapath_id, message
+    # Add a new entry in the forwarding table / database.
     @fdb.learn message.eth_src, message.in_port
+    # Obtain the port number associated to the destination.
     port_no = @fdb.port_no_of(message.eth_dst)
     if port_no
       flow_mod datapath_id, message, port_no
@@ -89,7 +93,9 @@ class LearningSwitch < Controller
     packet_out datapath_id, message, OFPP_ALL
   end
 
+  # Responsible for printing out detailed packet information.
   def print_packets(datapath_id, event)
+    # Filters packets showing only those sent among hosts defined in the configuration.
     if event.ipv4_src == "192.168.0.1" || event.ipv4_src == "192.168.0.2" || event.ipv4_src == "192.168.0.3"
       puts 'received a packet_in!'
       info "datapath_id: #{ datapath_id.to_hex }"
