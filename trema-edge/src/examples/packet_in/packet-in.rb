@@ -30,7 +30,7 @@ class PacketinDumper < Controller
   end
 
   def packet_in(datapath_id, event)
-    if event.udp_src == 0x1
+    if event.ipv4_src == "192.168.0.1" || event.ipv4_src == "192.168.0.2" || event.ipv4_src == "192.168.0.3"
       puts 'received a packet_in!'
       info "datapath_id: #{ datapath_id.to_hex }"
       info "transaction_id: #{ event.transaction_id.to_hex }"
