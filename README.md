@@ -7,3 +7,7 @@ To Run:
 To Send Packets:
 
 ./trema send_packets --source host1 --dest host2 --n_pkts=10
+
+To Show Host Details:
+
+./trema show_stats host1
